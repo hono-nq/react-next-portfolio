@@ -6,36 +6,27 @@ function validateEmail(email: string) {
 }
 
 export async function createContact(_prevState: any, formData: FormData) {
-    const rawFormDate = {
-        lastname: formData.get("lastname") as string,
-        firstname: formData.get("firstname") as string,
-        company: formData.get("company") as string,
-        email: formData.get("email") as string,
-        message: formData.get("message") as string,
+    const pickValue = (key: string) => {
+        const value = formData.get(key);
+        return typeof value === "string" ? value : "";
     };
 
-    if (!rawFormDate.lastname) {
+    const rawFormDate = {
+        name: pickValue("name"),
+        email: pickValue("email"),
+        affiliation: pickValue("affiliation").trim(),
+        portfolioUrl: pickValue("portfolioUrl").trim(),
+        message: pickValue("message"),
+    };
+
+    if (!rawFormDate.name || rawFormDate.name.trim().length === 0) {
         return {
             status: "error",
-            message: "姓を入力してください。",
-        };
-    }
-    
-    if (!rawFormDate.firstname) {
-        return {
-            status: "error",
-            message: "名を入力してください。",
+            message: "お名前を入力してください。",
         };
     }
 
-    if (!rawFormDate.company) {
-        return {
-            status: "error",
-            message: "会社名を入力してください。",
-        };
-    }
-
-    if (!rawFormDate.email) {
+    if (!rawFormDate.email || rawFormDate.email.trim().length === 0) {
         return {
             status: "error",
             message: "メールアドレスを入力してください。",
@@ -49,45 +40,69 @@ export async function createContact(_prevState: any, formData: FormData) {
         };
     }
 
-    if (!rawFormDate.message) {
+    if (!rawFormDate.message || rawFormDate.message.trim().length === 0) {
         return {
             status: "error",
             message: "メッセージを入力してください。",
         };
     }
+    const portalId = process.env.HUBSPOT_PORTAL_ID;
+    const formId = process.env.HUBSPOT_FORM_ID;
+
+    if (!portalId || !formId) {
+        console.error("HubSpotの環境変数が設定されていません。");
+        return {
+            status: "error",
+            message: "送信設定に不備があります。管理者へご連絡ください。",
+        };
+    }
+
     const result = await fetch(
-        "https://api.hsforms.com/submissions/v3/integration/submit/$(process.snv.HUBSPOT_PORTAL_ID)/$(process.snv.HUBSPOT_FROM_ID)",
+        `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`,
         {
             method: "POST",
             headers: {
-                "Contest-Type": "aplication/json",
+                "Content-Type": "application/json",
             },
             body: JSON.stringify({
                 fields: [
                     {
                         objectTypeId: "0-1",
-                        name: "lastname",
-                        value: rawFormDate.lastname,
-                    },
-                    {
-                        objectTypeId: "0-1",
-                        name: "firstname",
-                        value: rawFormDate.firstname,
+                        name: "name",
+                        value: rawFormDate.name,
                     },
                     {
                         objectTypeId: "0-1",
                         name: "email",
                         value: rawFormDate.email,
                     },
+                    ...(rawFormDate.affiliation
+                        ? [
+                            {
+                                objectTypeId: "0-1" as const,
+                                name: "affiliation",
+                                value: rawFormDate.affiliation,
+                            },
+                        ]
+                        : []),
+                    ...(rawFormDate.portfolioUrl
+                        ? [
+                            {
+                                objectTypeId: "0-1" as const,
+                                name: "portfolio_url",
+                                value: rawFormDate.portfolioUrl,
+                            },
+                        ]
+                        : []),
                     {
                         objectTypeId: "0-1",
                         name: "message",
                         value: rawFormDate.message,
-                    }
-                ]
-            })
+                    },
+                ],
+            }),
         }
-    )
+    );
 
     try {
         await result.json();
@@ -95,8 +110,8 @@ export async function createContact(_prevState: any, formData: FormData) {
         console.error(e);
         return {
             status: "error",
-            message: "お問い合わせ中に失敗しました"
+            message: "送信中に問題が発生しました。時間を置いて再度お試しください。",
         };
     }
-    return { status: "success" , message: "OK"};
+    return { status: "success", message: "OK" };
 }

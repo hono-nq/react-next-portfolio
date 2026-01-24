@@ -1,7 +1,21 @@
 .container {
-    /* 必要に応じてスタイルを追加 */
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
 }
 
 .text {
-    margin-bottom: 30px;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: #1f2937;
+    background-color: #f9fafb;
+    border-radius: 12px;
+    padding: 24px;
+}
+
+@media (max-width: 640px) {
+    .text {
+        font-size: 1rem;
+        padding: 20px;
+    }
 }

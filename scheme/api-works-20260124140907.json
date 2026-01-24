@@ -1,0 +1,1 @@
+{"apiFields":[{"fieldId":"name","name":"名前","kind":"text","required":true},{"fieldId":"thumbnail","name":"サムネ","kind":"media","required":false},{"fieldId":"content","name":"内容","kind":"richEditorV2","required":true},{"fieldId":"description","name":"要約","kind":"textArea","required":true}],"customFields":[]}

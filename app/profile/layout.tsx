@@ -5,10 +5,10 @@ type Props = {
     children: React.ReactNode;
 };
 
-export default function MembersLayout({ children }: Props) {
+export default function ProfileLayout({ children }: Props) {
     return (
         <>
-            <Hero title="Members" sub="メンバー" />
+            <Hero title="Profile" sub="自己紹介" />
             <Sheet>{children}</Sheet>
         </>
     )

@@ -9,9 +9,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body>
+      <body className="siteBody">
         <Header />
-        {children}
+        <div className="siteContent">
+          <div className="siteContentInner">{children}</div>
+        </div>
         <Footer />
       </body>
     </html>

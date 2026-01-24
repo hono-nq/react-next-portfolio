@@ -11,7 +11,6 @@ const initialState = {
 
 export default function ContactForm() {
     const [state, formAction] = useFormState(createContact, initialState);
-    console.log(state);
     if (state.status === "success") {
         return (
             <p className={styles.success}>
@@ -23,37 +22,63 @@ export default function ContactForm() {
     }
     return (
         <form className={styles.form} action={formAction}>
-            <div className={styles.horizontal}>
-                <div className={styles.item}>
-                    <label className={styles.label} htmlFor="lastname">
-                        姓
-                    </label>
-                    <input className={styles.textfield} type="text" id="lastname" name="lastname" />
-                </div>
-                <div className={styles.item}>
-                    <label className={styles.label} htmlFor="firstname">
-                        名
-                    </label>
-                    <input className={styles.textfield} type="text" id="firstname" name="firstname" />
-                </div>
-            </div>
             <div className={styles.item}>
-                <label className={styles.label} htmlFor="company">
-                    会社名
+                <label className={styles.label} htmlFor="name">
+                    お名前 <span className={styles.required}>必須</span>
                 </label>
-                <input className={styles.textfield} type="text" id="company" name="company" />
+                <input
+                    className={styles.textfield}
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                />
             </div>
             <div className={styles.item}>
                 <label className={styles.label} htmlFor="email">
-                    メールアドレス
+                    メールアドレス <span className={styles.required}>必須</span>
                 </label>
-                <input className={styles.textfield} type="text" id="email" name="email" />
+                <input
+                    className={styles.textfield}
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                />
+            </div>
+            <div className={styles.item}>
+                <label className={styles.label} htmlFor="affiliation">
+                    ご所属（企業・学校など） <span className={styles.optional}>任意</span>
+                </label>
+                <input
+                    className={styles.textfield}
+                    type="text"
+                    id="affiliation"
+                    name="affiliation"
+                />
+            </div>
+            <div className={styles.item}>
+                <label className={styles.label} htmlFor="portfolioUrl">
+                    参考URL <span className={styles.optional}>任意</span>
+                </label>
+                <input
+                    className={styles.textfield}
+                    type="url"
+                    id="portfolioUrl"
+                    name="portfolioUrl"
+                />
             </div>
             <div className={styles.item}>
                 <label className={styles.label} htmlFor="message">
-                    メッセージ
+                    お問い合わせ内容 <span className={styles.required}>必須</span>
                 </label>
-                <textarea className={styles.textfield} id="message" name="message" />
+                <textarea
+                    className={styles.textarea}
+                    id="message"
+                    name="message"
+                    rows={6}
+                    required
+                />
             </div>
             <div className={styles.action}>
                 {state.status === "error" && (

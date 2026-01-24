@@ -2,13 +2,14 @@
   --font-mono: ui-monospace,
   Menlo,Monaco,"Cascadia Mono","Segoe UI Mono","Oxygen Mono","Ubuntu Monospace","Souce Code Pro","Fira Mono",
   "Droid Sans Mono","Courier New",monospace;
-  --colortext-main: #333;
-  --color-text-sub: #999;
+  --color-text-main: #fff;
+  --color-text-sub: #fff;
   --color-text-inverse: #fff;
   --color-text-error: #f33;
-  --color-bg-main: #fff;
-  --color-bg-sub: #f3f3f3;
+  --color-bg-main: #E9C9D4;
+  --color-bg-sub: #E9C9D4;
   --color-text-unpainted: #fff;
+  --color-text-painted: #fff;
   --color-bg-painted: #333;
   --color-border-dark: #333;
   --color-border: #ddd;
@@ -43,7 +44,54 @@ body{
     Meiryo,
     sans-serif;
   color: var(--color-text-main);
+  background-color: var(--color-bg-main);
+  font-weight: 700;
   line-height: 1.8;
+}
+
+.siteBody {
+  background-color: var(--color-bg-main);
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.siteBody::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("/image_1.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.siteBody::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(233, 201, 212, 0.5), rgba(233, 201, 212, 0.5));
+  z-index: 1;
+}
+
+.siteBody > * {
+  position: relative;
+  z-index: 2;
+}
+
+.siteContent {
+  position: relative;
+  flex: 1;
+}
+
+.siteContentInner {
+  position: relative;
+  z-index: 2;
 }
 
 code{
