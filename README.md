@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Read me
+react-next-portfolio
 
-## Getting Started
+サイトURL: https://react-next-portfolio-five-chi.vercel.app/
 
-First, run the development server:
+React と Next.js でこのポートフォリオサイトを制作しました。
+ご覧いただきありがとうございます！
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+課題の紹介
+##TOP
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+最初の画面で名前と簡単な挨拶を表示
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+最新の活動・ニュースをタイムライン形式で表示
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+グローバルナビゲーションで各ページへ遷移できる
 
-## Learn More
+##自己紹介のページ
 
-To learn more about Next.js, take a look at the following resources:
+自己紹介文（名前・略歴・スキル概要）を掲載
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+見に来てくれた人に最初に印象付ける内容に重点
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+ポートフォリオの目的・コンセプトを説明
 
-## Deploy on Vercel
+##ブログ一覧ページ
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+活動のお知らせ（例：プロジェクト参加、合格実績）一覧を表示
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+記事の日付・カテゴリを明示
+
+各記事へのリンクを設置
+
+##ブログ詳細ページ
+
+個別の記事ページ（ニュースの詳細内容）
+
+記事タイトル・日付・本文
+
+関連リンクやカテゴリ情報の表示（該当があれば）
+
+#一番見てほしいところ
+
+トップページの最新ニュース（活動実績）
+
+自己紹介セクションでのスキル・志向の表現
+
+作品一覧の UI とインタラクション
+
+#力を入れた点
+##実装面
+
+Next.js のページ遷移 と SEO を意識したマークアップ
+
+モバイルファーストレスポンシブ対応
+
+静的生成（Static Generation）によるパフォーマンス最適化
+
+##デザイン面
+
+シンプルで読みやすいレイアウト
+
+カラーコントラストとタイポグラフィの調整
+
+適切な余白・視線誘導を考えた配置
