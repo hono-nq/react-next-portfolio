@@ -8,6 +8,13 @@
     display: none;
 }
 
+@media (max-width: 900px) {
+    .items {
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+}
+
 @media (max-width: 640px) {
     .nav {
         display: none;

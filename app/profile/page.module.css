@@ -66,6 +66,26 @@
     line-height: 1.8;
 }
 
+@media (max-width: 900px) {
+    .container {
+        padding: 48px 24px;
+        border-radius: 28px;
+    }
+
+    .image {
+        width: 260px;
+    }
+
+    .name {
+        font-size: 1.7rem;
+        margin-bottom: 28px;
+    }
+
+    .list {
+        gap: 40px;
+    }
+}
+
 @media (max-width: 640px) {
     .container {
         padding: 40px 20px;

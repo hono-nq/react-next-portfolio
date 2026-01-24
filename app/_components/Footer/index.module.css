@@ -18,6 +18,13 @@
     white-space: nowrap;
 }
 
+@media (max-width: 900px) {
+    .items {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+}
+
 @media (max-width: 640px) {
     .items {
         flex-wrap: wrap;

@@ -23,3 +23,15 @@
   color: var(--color-text-unpainted);
   background-color: var(--color-button-primary);
 }
+
+@media (max-width: 640px) {
+  .container {
+    padding: 16px;
+    margin-top: 16px;
+  }
+
+  .item {
+    width: 32px;
+    height: 32px;
+  }
+}

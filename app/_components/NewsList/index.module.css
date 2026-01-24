@@ -30,6 +30,19 @@
     gap: 16px;
 }
 
+@media (max-width: 960px) {
+    .link{
+        gap: 24px;
+    }
+    .image{
+        width: 160px;
+    }
+    .meta{
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+}
+
 @media (max-width: 640px) {
     .link{
         display: block;
