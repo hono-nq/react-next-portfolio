@@ -1,0 +1,51 @@
+
+.cursorEffect {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.sparkle {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  background: radial-gradient(
+    circle,
+    rgba(255, 235, 245, 0.95) 0%,
+    rgba(233, 201, 212, 0.65) 45%,
+    rgba(233, 201, 212, 0) 70%
+  );
+  animation: sparkleFade 0.7s ease-out forwards;
+  filter: blur(0.3px);
+}
+
+@keyframes sparkleFade {
+  0% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursorEffect {
+    display: block;
+  }
+
+  .sparkle {
+    animation: none;
+    opacity: 0.6;
+  }
+}
+
+@media (hover: none) {
+  .cursorEffect {
+    display: none;
+  }
+}
